@@ -339,6 +339,24 @@ $wgVisualEditorAvailableNamespaces = [
 	NS_OFFICIAL_TALK => true
 ];
 
+## PERMISSION SETTINGS
+# The following permissions were set based on your choice in the installer
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['*']['autocreateaccount'] = true;
+$wgGroupPermissions['*']['read'] = true;
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['writeapi'] = false;
+
+# privateinfo edit permission
+$wgGroupPermissions['*']['editmyprivateinfo'] = false;
+$wgGroupPermissions['sysop']['editmyprivateinfo'] = true;
+// $wgGroupPermissions['officer']['editmyprivateinfo'] = true;
+$wgGroupPermissions['bureaucrat']['editmyprivateinfo'] = true;
+
+$wgGroupPermissions['sysop']['interwiki'] = true;
+$wgCaptchaTriggers['edit'] = true;
+$wgCaptchaTriggers['create'] = true;
+
 # limit Official namespace edit to sysop.
 # see mediawiki.org/wiki/Manual:$wgNamespaceProtection
 # and mediawiki.org/wiki/Manual:Using_custom_namespaces
