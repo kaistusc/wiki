@@ -21,7 +21,7 @@ if (!isset($maintClass) || (isset($maintClass) && $maintClass !== 'PHPUnitMaintC
 # $wgDisableOutputCompression = true;
 
 $wgSitename = $_ENV["WG_SITENAME"];
-$wgMetaNamespace = "프로젝트";
+$wgMetaNamespace = $_ENV["WG_METANAMESPACE"];
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -66,10 +66,10 @@ $wgSMTP = [
     'host' => $_ENV["WG_SMTP_HOST"],
     'IDHost' => $_ENV["WG_SMTP_IDHOST"],
     'localhost' => $_ENV["WG_SMTP_LOCALHOST"],
-    'port' => $_ENV["WG_SMTP_PORT"],
+    'port' => (int)$_ENV["WG_SMTP_PORT"],
     'username' => $_ENV["WG_SMTP_USERNAME"],
     'password' => $_ENV["WG_SMTP_PASSWORD"],
-    'auth' => $_ENV["WG_SMTP_AUTH"]
+    'auth' => $_ENV["WG_SMTP_AUTH"] ? true : false
 ];
 
 $wgEnotifUserTalk = false; # UPO
