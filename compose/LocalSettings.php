@@ -42,7 +42,7 @@ $wgArticlePath = $wgActionPaths['view'];
 
 ## The protocol and server name to use in fully-qualified URLs
 $wgServer = "//" . $_SERVER["SERVER_NAME"];
-$wgCanonicalServer = "https://" . $_ENV["BIND_URL"];
+$wgCanonicalServer = "http://" . $_ENV["HOST"];
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -160,30 +160,6 @@ $wgDiff3 = "/usr/bin/diff3";
 # Set default timezone
 $wgLocaltimezone = "Asia/Seoul";
 
-# Create a namespace 'Official'
-define("NS_OFFICIAL", 100);
-define("NS_OFFICIAL_TALK", 101);
-
-$wgExtraNamespaces =
-    array(NS_OFFICIAL => "학부총학생회",
-          NS_OFFICIAL_TALK => "학부총학생회토론",
-    );
-
-$wgNamespaceAliases['오피셜'] = NS_OFFICIAL;
-$wgNamespaceAliases['Official'] = NS_OFFICIAL;
-$wgNamespaceAliases['학부총'] = NS_OFFICIAL;
-
-$wgNamespaceAliases['오피셜토론'] = NS_OFFICIAL_TALK;
-$wgNamespaceAliases['Official_talk'] = NS_OFFICIAL_TALK;
-
-$wgNamespacesWithSubpages[NS_OFFICIAL] = true;
-$wgNamespacesWithSubpages[NS_CATEGORY] = true;
-$wgNamespacesWithSubpages[NS_TEMPLATE] = true;
-
-$wgNamespacesToBeSearchedDefault[NS_OFFICIAL] = true;
-
-$wgRestrictDisplayTitle = false;
-
 $wgNamespacesWithSubpages[NS_MAIN] = true;
 $wgNamespacesWithSubpages[NS_PROJECT] = true;
 $wgNamespacesWithSubpages[NS_MEDIAWIKI] = true;
@@ -194,7 +170,7 @@ $wgNamespaceProtection[NS_PROJECT] = ['editproject'];
 
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['*']['edit'] = false;
-$wgGroupPermissions['*']['read'] = false;
+$wgGroupPermissions['*']['read'] = true;
 $wgGroupPermissions['sysop']['editproject'] = true;
 
 ## Default skin: you can change the default skin. Use the internal symbolic
@@ -225,19 +201,7 @@ wfLoadExtension('CodeEditor');
 $wgDefaultUserOptions['usebetatoolbar'] = 1; // user option provided by WikiEditor extension
 wfLoadExtension('Disambiguator');
 wfLoadExtension('Echo');
-wfLoadExtension('EmbedVideo');
-wfLoadExtension('EventLogging');
-wfLoadExtension('Flow');
-$wgContentHnadlerUseDB = true;
-$wgFlowContentFormat = 'html';
-$wgGroupPermissions['sysop']['flow-create-board'] = true;
-$wgGroupPermissions['sysop']['flow-suppress'] = true;
-$wgNamespaceContentModels[NS_TALK] = 'flow-board';
-$wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
-$wgNamespaceContentModels[NS_PROJECT_TALK] = 'flow-board';
-$wgNamespaceContentModels[NS_OFFICIAL_TALK] = 'flow-board';
 wfLoadExtension('Gadgets');
-wfLoadExtension('GuidedTour');
 wfLoadExtension('Graph');
 // wfLoadExtension('HSTS');
 // $wgHSTSBetaFeature = true;
@@ -250,15 +214,13 @@ wfLoadExtension('ImageMap');
 wfLoadExtension('InputBox');
 wfLoadExtension('Interwiki');
 $wgGroupPermissions['sysop']['interwiki'] = true;
-wfLoadExtension('InviteSignup');
-$wgGroupPermissions['bureaucrat']['invitesignup'] = true;
-wfLoadExtension('JsonConfig');
-// wfLoadExtension('Kartographer');
 // wfLoadExtension('LocalisationUpdate');
 // $wgLocalisationUpdateDirectory = "$IP/cache";
+wfLoadExtension('JsonConfig');
+// wfLoadExtension('Kartographer');
 wfLoadExtension('Lockdown');
-wfLoadExtension('LoginNotify');
-wfLoadExtension('MassMessage');
+wfLoadExtension('InviteSignup');
+$wgGroupPermissions['bureaucrat']['invitesignup'] = true;
 wfLoadExtension('Math');
 wfLoadExtension('MultimediaViewer');
 wfLoadExtension('MobileFrontend');
@@ -278,8 +240,6 @@ wfLoadExtension('RevisionSlider');
 wfLoadExtension('Renameuser');
 wfLoadExtension('ReplaceText');
 wfLoadExtension('SandboxLink');
-wfLoadExtension('SecurePoll');
-$wgGroupPermissions['bureaucrat']['securepoll-create-poll'] = true;
 wfLoadExtension('Scribunto');
 $wgScribuntoDefaultEngine = 'luastandalone';
 wfLoadExtension('SiteMetrics');
@@ -334,9 +294,7 @@ $wgVisualEditorAvailableNamespaces = [
 	NS_TEMPLATE => true,
 	NS_TEMPLATE_TALK => true,
 	NS_HELP => true,
-	NS_HELP_TALK => true,
-	NS_OFFICIAL => true,
-	NS_OFFICIAL_TALK => true
+	NS_HELP_TALK => true
 ];
 
 ## PERMISSION SETTINGS
