@@ -253,7 +253,7 @@ $wgGroupPermissions['sysop']['interwiki'] = true;
 wfLoadExtension('InviteSignup');
 $wgGroupPermissions['bureaucrat']['invitesignup'] = true;
 wfLoadExtension('JsonConfig');
-// wfLoadExtension('Kartographer');
+wfLoadExtension('Kartographer');
 // wfLoadExtension('LocalisationUpdate');
 // $wgLocalisationUpdateDirectory = "$IP/cache";
 wfLoadExtension('Lockdown');
