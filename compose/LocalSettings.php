@@ -99,7 +99,7 @@ $wgEnableUploads = true;
 
 # Allowed File Extensions
 $wgFileExtensions = array(
-	'png', 'gif', 'jpg', 'jpeg', 'ico',
+	'png', 'gif', 'jpg', 'jpeg', 'ico', 'svg',
 	'pdf',
 	'key', 'pages', 'numbers',
 	'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
@@ -135,7 +135,7 @@ $wgShellLocale = "C.UTF-8";
 #$wgCacheDirectory = "$IP/cache";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
-$wgLanguageCode = "ko";
+$wgLanguageCode = $_ENV["WG_LANGUAGECODE"];
 
 $wgSecretKey = $_ENV["WG_SECRETKEY"];
 

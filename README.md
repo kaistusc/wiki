@@ -33,7 +33,7 @@ EMAIL=me@mail.com
 
 | Variable (Required*) | Example     | Description                                           |
 | -------------------- | ----------- | ----------------------------------------------------- |
-| HOST*                | localhost   | URL that hosts mediawiki                              |
+| HOST*                | localhost   | Domain name that hosts mediawiki. Or IP address.      |
 | EMAIL*               | me@mail.com | An email address for issuing letsencrypt certificate. |
 
 #### `.config`
@@ -43,6 +43,7 @@ MYSQL_USER=user
 MYSQL_PASSWORD=P@55W0RD
 WG_SITENAME=
 WG_METANAMESPACE=Project
+WG_LANGUAGECODE=en
 WG_EMERGENCYCONTACT=me@mail.com
 WG_PASSWORDSENDER=me@mail.com
 WG_SECRETKEY=
@@ -62,6 +63,7 @@ WG_SMTP_AUTH=true
 | MYSQL_PASSWORD*      | P@55W0RD             | **Do not leak**. Password of corresponding user              |
 | WG_SITENAME*         | Wikipedia            | Name of wiki.                                                |
 | WG_METANAMESPACE*    | Project              | Name for project namespace                                   |
+| WG_LANGUAGECODE*     | en                   | Language code for wiki                                       |
 | WG_EMERGENCYCONTACT* | abcd@efg.com         | Emergency email address. Also used for letsencrypt certificate issuing. |
 | WG_PASSWORDSENDER    | abcd@efg.com         | Adress that may send email reset, security alers, etc.       |
 | WG_SECRETKEY*        | *(64 length string)* | **Do not leak**. Random 64-character alphanumeric string. You can generate one with `keygen.py`. Refer [Manual:$wgSecretKey](https://www.mediawiki.org/wiki/Manual:$wgSecretKey). |
@@ -117,4 +119,14 @@ docker-compose down
 
 **CAUTION**: Do not use option `-v` or `--volumes` when stopping services. It will irreversibly delete wiki data(including files and articles, users, etc) entirely.
 
-## Backup
+## Backup and Restore
+
+To backup, run backup script. It'll archive database contents and uploaded files into `backups` directory.
+
+```bash
+./backup.sh
+```
+
+Restore script is not ready yet.
+
+Refer to [Manual:Backing up a wiki](https://mediawiki.org/wiki/Manual:Backing_up_a_wiki) for more detail.
